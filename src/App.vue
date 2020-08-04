@@ -29,8 +29,9 @@ export default {
   methods: {
     async fetchShifts() {
       const response = await axios.get("/api/shifts", {
-        headers: {
-          Authorization: `Basic ${process.env.VUE_APP_TOKEN}`,
+        auth: {
+          username: process.env.VUE_APP_API_USERNAME,
+          password: process.env.VUE_APP_API_PASSWORD,
         },
       });
       const data = response.data;
@@ -54,8 +55,9 @@ export default {
       this.shiftInfo.loading = true;
       await new Promise((r) => setTimeout(r, 2000));
       await axios.get("/api/reset_shifts", {
-        headers: {
-          Authorization: `Basic ${process.env.VUE_APP_TOKEN}`,
+        auth: {
+          username: process.env.VUE_APP_API_USERNAME,
+          password: process.env.VUE_APP_API_PASSWORD,
         },
       });
     },
