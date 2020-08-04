@@ -28,7 +28,11 @@ export default {
   },
   methods: {
     async fetchShifts() {
-      const response = await axios.get("/api/shifts");
+      const response = await axios.get("/api/shifts", {
+        headers: {
+          Authorization: `Basic ${process.env.VUE_APP_TOKEN}`,
+        },
+      });
       const data = response.data;
       await new Promise((r) => setTimeout(r, 2000));
       return data;
@@ -49,7 +53,11 @@ export default {
     async resetRoster() {
       this.shiftInfo.loading = true;
       await new Promise((r) => setTimeout(r, 2000));
-      await axios.get("/api/reset_shifts");
+      await axios.get("/api/reset_shifts", {
+        headers: {
+          Authorization: `Basic ${process.env.VUE_APP_TOKEN}`,
+        },
+      });
     },
     setUpdated(day, time) {
       setTimeout(() => {
