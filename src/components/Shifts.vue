@@ -17,10 +17,16 @@
         :class="{'updated': day.isUpdated}"
       >
         <b-card-title>{{day.day}}</b-card-title>
-        <b-card-body :body-bg-variant="alertVariant(day.shifts.am)">
+        <b-card-body
+          :body-bg-variant="alertVariant(day.shifts.am)"
+          :body-text-variant="day.shifts.am.isUpdated ? 'white' : ''"
+        >
           <b-card-text>Morning Shift assigned to {{fixName(day.shifts.am.assignee)}} at {{day.shifts.am.timestamp}}</b-card-text>
         </b-card-body>
-        <b-card-body :body-bg-variant="alertVariant(day.shifts.pm)">
+        <b-card-body
+          :body-bg-variant="alertVariant(day.shifts.pm)"
+          :body-text-variant="day.shifts.pm.isUpdated ? 'white' : ''"
+        >
           <b-card-text>Evening Shift assigned to {{fixName(day.shifts.pm.assignee)}} at {{day.shifts.pm.timestamp}}</b-card-text>
         </b-card-body>
       </b-card>
