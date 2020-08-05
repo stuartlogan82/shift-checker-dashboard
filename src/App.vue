@@ -12,6 +12,8 @@ import Pusher from "pusher-js";
 
 import Shifts from "./components/Shifts.vue";
 import Header from "./components/Header";
+const base_url = process.env.VUE_APP_BASE_API_URL;
+
 export default {
   name: "App",
   components: {
@@ -28,7 +30,7 @@ export default {
   },
   methods: {
     async fetchShifts() {
-      const response = await axios.get("/api/shifts", {
+      const response = await axios.get(`${base_url}/api/shifts`, {
         auth: {
           username: process.env.VUE_APP_API_USERNAME,
           password: process.env.VUE_APP_API_PASSWORD,
@@ -54,7 +56,7 @@ export default {
     async resetRoster() {
       this.shiftInfo.loading = true;
       await new Promise((r) => setTimeout(r, 2000));
-      await axios.get("/api/reset_shifts", {
+      await axios.get(`${base_url}/api/reset_shifts`, {
         auth: {
           username: process.env.VUE_APP_API_USERNAME,
           password: process.env.VUE_APP_API_PASSWORD,
