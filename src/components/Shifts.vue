@@ -7,7 +7,7 @@
     </div>
   </div>
   <div v-else style="margin-top: 30px">
-    <h2>Text "shifts" to +447480538947</h2>
+    <h2>Text "shifts" to +44 7480 538947 or +1 628 336-4022</h2>
     <b-card-group>
       <b-card
         bg-variant="light"
